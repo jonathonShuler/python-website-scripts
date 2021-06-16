@@ -1,6 +1,7 @@
 # python-website-scripts
-# Based on this tutorial: https://www.youtube.com/watch?v=X7hXR_1eA5c
+Based on this tutorial: https://www.youtube.com/watch?v=X7hXR_1eA5c
 
-# Make sure `requests` is installed (pip install requests)
-# Make sure `bs4` is installed (pip install bs4)
-# 
+Make sure `requests` is installed (pip install requests)
+Make sure `bs4` is installed (pip install bs4)
+
+To run in powershell: PS C:\Users\Public\python-website-scripts> .\StockAlertSound.py

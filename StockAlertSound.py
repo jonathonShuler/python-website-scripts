@@ -5,50 +5,50 @@ from playsound import playsound
 import smtplib
 import time
 
-tumbler_url = 'https://www.rockshed.com/rock-shop/rock-tumblers-supplies/rock-tumblers/rotary-rock-tumblers/lortone-model-qt12-single-12lb-capacity-barrel/'
-console_url = 'https://direct.playstation.com/en-us/consoles/console/playstation5-digital-edition-console.3005817'
+url_ip = 'https://www.google.com/search?q=what+is+my+ip+address'
+url_3080 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and-black/6429440.p?skuId=6429440'
 
-tumbler_flag = True
-console_flag = True
+flag_ip = True
+flag_3080 = True
 
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
 
-def check_tumbler():
-    print("Checking Tumbler")
+def check_ip():
+    print("Checking ip")
     
-    page = requests.get(tumbler_url, headers=headers)
-    bs = BeautifulSoup(page.content, 'html.parser')
+    page = requests.get(url_ip, headers=headers)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    
+    ip_div = soup.select('div.NEM4H')
+    ip_address = ip_div[0].get_text()
+    print(ip_address)
 
-    stock = bs.find(class_ = "stock out-of-stock").get_text()
-    if(stock != "Out of stock"):
-        playsound('Synthwave-CC0.wav')
-        global tumbler_flag
-        tumbler_flag = False
-        print("QT12 In Stock!!!")
+def check_3080():
+    print("Checking 3080")
+    
+    page = requests.get(url_3080, headers=headers)
+    soup = BeautifulSoup(page.content, 'html.parser')
 
-def check_console():
-    print("Checking Console")
-
-    page = requests.get(console_url, headers=headers)
-    bs = BeautifulSoup(page.content, 'html.parser')
-
-    stock = bs.find(class_ = "out-stock-wrpr").find(class_ = "sony-text-body-1").get_text()
-    if(stock != "Out of Stock"):
-        playsound('Synthwave-CC0.wav')
-        global console_flag
-        console_flag = False
-        print("PS5 In Stock!!!")
-
-while tumbler_flag or console_flag:
-
-    if tumbler_flag == True:
-        check_tumbler()
+    button = soup.select('button[data-sku-id]')
+    text = button[0].get_text();
+    print(text)
+    
+    if(text != "Sold Out"):
+        print("3080 In Stock!!!")
+        while True:
+            playsound('Synthwave-CC0.wav')
+    else:
+        print("3080 Not In Stock... Sleeping...")
+        time.sleep(30)
         
-    print("Sleeping")
-    time.sleep(60)
-
-    if console_flag == True:
-        check_console()
-
-    print("Sleeping")
-    time.sleep(60)
+loop_count = 0
+while flag_ip or flag_3080:
+    print(loop_count)
+    
+    if flag_ip and loop_count == 0 or loop_count % 10 == 0:
+        check_ip()
+    
+    if flag_3080:
+        check_3080()
+        
+    loop_count += 1
