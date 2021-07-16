@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 from playsound import playsound
+from selenium import webdriver
 import smtplib
 import time
 
@@ -11,7 +12,7 @@ url_two = 'https://www.bestbuy.com/site/corsair-vengeance-lpx-32gb-2-x-16gb-3-2-
 
 flag_ip = False
 flag_one = True
-flag_two = True
+flag_two = False
 
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
 
@@ -31,12 +32,13 @@ def check_one():
     page = requests.get(url_one, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    button = soup.select('button[data-sku-id="6429442"]')
-    print(button)
+    css_selector = 'button[data-sku-id="6429442"]'
+    button = soup.select(css_selector)
     text = button[0].get_text();
     print(text)
     
     if(text != "Sold Out"):
+        add_to_cart(url_one, css_selector);
         print("3070 In Stock!!!")
         while True:
             playsound('Synthwave-CC0.wav')
@@ -45,23 +47,32 @@ def check_one():
         time.sleep(15)
 
 def check_two():
-    print("Checking two 3080")
+    print("Checking Memory")
     
     page = requests.get(url_two, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
-
-    button = soup.select('button[data-sku-id="6448611"]')
-    print(button)
+    
+    css_selector = 'button[data-sku-id="6448611"]'
+    button = soup.select(css_selector)
     text = button[0].get_text();
     print(text)
     
     if(text != "Sold Out"):
+        add_to_cart(url_two, css_selector);
         print("Memory In Stock!!!")
         while True:
             playsound('Synthwave-CC0.wav')
     else:
         print("Memory Not In Stock... Sleeping...")
         time.sleep(15)
+        
+def add_to_cart(url, selector):
+    driver = webdriver.Chrome();
+    driver.get(url);
+    element = driver.find_element_by_css_selector(selector);
+    element.click()
+    while(True):
+       playsound('Synthwave-CC0.wav')
 
 loop_count = 0
 while flag_ip or flag_one or flag_two:
