@@ -14,6 +14,8 @@ flag_ip = False
 flag_one = True
 flag_two = True
 
+add_cart = False
+
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
 
 def check_ip():
@@ -32,20 +34,26 @@ def check_one():
     page = requests.get(url_one, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    css_selector = 'button[data-sku-id="6429442"]'
-    button = soup.select(css_selector)
-    text = button[0].get_text();
-    print(text)
+    fulfillment_css_selector = 'div.fulfillment-fulfillment-summary'
+    fulfillment = soup.select(fulfillment_css_selector)
+    fulfillment_text = fulfillment[0].get_text();
+    print("fulfillment: " + fulfillment_text)
+
+    button_css_selector = 'button[data-sku-id="6429442"]'
+    button = soup.select(button_css_selector)
+    button_text = button[0].get_text();
+    print("button: " + button_text)
     
-    if text != "Sold Out":
-        if text != "In Store Only":
-            add_to_cart(url_one, css_selector);
+    if fulfillment_text != "Sold Out" or button_text != "Sold Out":
+        if add_cart:
+            add_to_cart(url_one, button_css_selector);
             print("Nvidia In Stock!!!")
             while True:
                 playsound('Synthwave-CC0.wav')
         else:
-            print("Nvidia In Store?!!!")
-            playsound('Synthwave-CC0.wav')
+            print("Nvidia In Stock?!!!")
+            while True:
+                playsound('Synthwave-CC0.wav')
     else:
         print("Nvidia Not In Stock... Sleeping...")
         time.sleep(10)
@@ -56,16 +64,26 @@ def check_two():
     page = requests.get(url_two, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
     
-    css_selector = 'button[data-sku-id="6439299"]'
-    button = soup.select(css_selector)
-    text = button[0].get_text();
-    print(text)
+    fulfillment_css_selector = 'div.fulfillment-fulfillment-summary'
+    fulfillment = soup.select(fulfillment_css_selector)
+    fulfillment_text = fulfillment[0].get_text();
+    print("fulfillment: " + fulfillment_text)
+
+    button_css_selector = 'button[data-sku-id="6439299"]'
+    button = soup.select(button_css_selector)
+    button_text = button[0].get_text();
+    print("button: " + button_text)
     
-    if text != "Sold Out":
-        add_to_cart(url_two, css_selector);
-        print("EVGA In Stock!!!")
-        while True:
-            playsound('Synthwave-CC0.wav')
+    if fulfillment_text != "Sold Out" or button_text != "Sold Out":
+        if add_cart:
+            add_to_cart(url_two, button_css_selector);
+            print("EVGA In Stock!!!")
+            while True:
+                playsound('Synthwave-CC0.wav')
+        else:
+            print("EVGA In Stock?!!!")
+            while True:
+                playsound('Synthwave-CC0.wav')
     else:
         print("EVGA Not In Stock... Sleeping...")
         time.sleep(10)
@@ -73,7 +91,7 @@ def check_two():
 def add_to_cart(url, selector):
     driver = webdriver.Chrome();
     driver.get(url);
-    element = driver.find_element_by_css_selector(selector);
+    element = driver.find_element_by_button_css_selector(selector);
     element.click()
     while(True):
        playsound('Synthwave-CC0.wav')
