@@ -6,7 +6,7 @@ import time
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/87.0.4280.88 Safari/537.36'}
-add_cart = False
+add_cart = True
 wait_duration = 4
 
 
@@ -18,13 +18,13 @@ class Product:
         self.flag = flag
 
 
-url1 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
-       '-and-black/6429442.p?skuId=6429442 '
-product1 = Product(url1, "button[data-sku-id='6429442']", 'FE 3070', True)
-
-url2 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
-       '-black/6429440.p?skuId=6429440 '
-product2 = Product(url2, "button[data-sku-id='6429440']", 'FE 3080', True)
+# url1 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
+#        '-and-black/6429442.p?skuId=6429442 '
+# product1 = Product(url1, "button[data-sku-id='6429442']", 'FE 3070', True)
+#
+# url2 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
+#        '-black/6429440.p?skuId=6429440 '
+# product2 = Product(url2, "button[data-sku-id='6429440']", 'FE 3080', True)
 
 url3 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
        '/6439299.p?skuId=6439299 '
@@ -38,7 +38,7 @@ url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb
        '/6432400.p?skuId=6432400 '
 product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
-products = [product1, product2, product3, product4]
+products = [product3, product4, product5]
 loop_count = 0
 
 
@@ -59,7 +59,7 @@ def check_product(product):
     print("{0}: button: {1}".format(product.description, button_text))
 
     if fulfillment_text != "Sold Out" or button_text != "Sold Out":
-        if add_cart:
+        if add_cart and button_text != "Sold Out":
             add_to_cart(product.url, button_css_selector)
             print("{0} In Stock?!!!".format(product.description))
             while True:
