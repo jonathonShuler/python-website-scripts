@@ -6,7 +6,7 @@ import time
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/87.0.4280.88 Safari/537.36'}
-add_cart = True
+add_cart = False
 wait_duration = 4
 
 
@@ -34,11 +34,11 @@ url4 = 'https://www.bestbuy.com/site/evga-rtx-3080-xc3-ultra-gaming-10g-p5-3885-
        '?skuId=6471615 '
 product4 = Product(url4, "button[data-sku-id='6471615']", 'EVGA 3080 LHR', True)
 
-url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb-gddr6-pci-express-4-0-graphics-card' \
-       '/6432400.p?skuId=6432400 '
-product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
+#url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb-gddr6-pci-express-4-0-graphics-card' \
+#       '/6432400.p?skuId=6432400 '
+#product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
-products = [product3, product4, product5]
+products = [product3, product4]
 loop_count = 0
 
 

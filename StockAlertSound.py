@@ -28,7 +28,7 @@ def check_ip():
     print(ip_address)
 
 def check_one():
-    print("Checking Nvidia")
+    print("Checking Item One")
     
     page = requests.get(url_one, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -46,19 +46,19 @@ def check_one():
     if fulfillment_text != "Sold Out" or button_text != "Sold Out":
         if add_cart:
             add_to_cart(url_one, button_css_selector)
-            print("Nvidia In Stock!!!")
+            print("Item One In Stock!!!")
             while True:
                 playsound('Synthwave-CC0.wav')
         else:
-            print("Nvidia In Stock?!!!")
+            print("Item One In Stock?!!!")
             while True:
                 playsound('Synthwave-CC0.wav')
     else:
-        print("Nvidia Not In Stock... Sleeping...")
-        time.sleep(5)
+        print("Item One Not In Stock... Sleeping...")
+        time.sleep(4)
 
 def check_two():
-    print("Checking EVGA")
+    print("Checking Item Two")
     
     page = requests.get(url_two, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -76,16 +76,16 @@ def check_two():
     if fulfillment_text != "Sold Out" or button_text != "Sold Out":
         if add_cart:
             add_to_cart(url_two, button_css_selector)
-            print("EVGA In Stock!!!")
+            print("Item Two In Stock!!!")
             while True:
                 playsound('Synthwave-CC0.wav')
         else:
-            print("EVGA In Stock?!!!")
+            print("Item Two In Stock?!!!")
             while True:
                 playsound('Synthwave-CC0.wav')
     else:
-        print("EVGA Not In Stock... Sleeping...")
-        time.sleep(5)
+        print("Item Two Not In Stock... Sleeping...")
+        time.sleep(4)
         
 def add_to_cart(url, selector):
     driver = webdriver.Chrome()
