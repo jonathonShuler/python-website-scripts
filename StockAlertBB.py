@@ -34,9 +34,9 @@ url4 = 'https://www.bestbuy.com/site/evga-rtx-3080-xc3-ultra-gaming-10g-p5-3885-
        '?skuId=6471615 '
 product4 = Product(url4, "button[data-sku-id='6471615']", 'EVGA 3080 LHR', True)
 
-#url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb-gddr6-pci-express-4-0-graphics-card' \
-#       '/6432400.p?skuId=6432400 '
-#product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
+# url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb-gddr6-pci-express-4-0-graphics-card' \
+#        '/6432400.p?skuId=6432400 '
+# product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
 products = [product3, product4]
 loop_count = 0

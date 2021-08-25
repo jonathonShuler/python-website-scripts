@@ -15,7 +15,8 @@ flag_two = True
 
 add_cart = False
 
-headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
+
 
 def check_ip():
     print("Checking ip")
@@ -26,6 +27,7 @@ def check_ip():
     ip_div = soup.select('div.NEM4H')
     ip_address = ip_div[0].get_text()
     print(ip_address)
+
 
 def check_one():
     print("Checking Item One")
@@ -57,6 +59,7 @@ def check_one():
         print("Item One Not In Stock... Sleeping...")
         time.sleep(4)
 
+
 def check_two():
     print("Checking Item Two")
     
@@ -86,14 +89,16 @@ def check_two():
     else:
         print("Item Two Not In Stock... Sleeping...")
         time.sleep(4)
-        
+
+
 def add_to_cart(url, selector):
     driver = webdriver.Chrome()
     driver.get(url)
     element = driver.find_element_by_button_css_selector(selector)
     element.click()
-    while(True):
-       playsound('Synthwave-CC0.wav')
+    while True:
+        playsound('Synthwave-CC0.wav')
+
 
 loop_count = 0
 while flag_ip or flag_one or flag_two:
