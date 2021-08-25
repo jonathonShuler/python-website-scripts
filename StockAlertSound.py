@@ -94,7 +94,7 @@ def check_two():
 def add_to_cart(url, selector):
     driver = webdriver.Chrome()
     driver.get(url)
-    element = driver.find_element_by_button_css_selector(selector)
+    element = driver.find_element_by_css_selector(selector)
     element.click()
     while True:
         playsound('Synthwave-CC0.wav')
