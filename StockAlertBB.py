@@ -7,7 +7,7 @@ import time
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/87.0.4280.88 Safari/537.36'}
 add_cart = True
-wait_duration = 4
+wait_duration = 2
 
 
 class Product:
@@ -18,13 +18,17 @@ class Product:
         self.flag = flag
 
 
-# url1 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
+# url0 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
 #        '-and-black/6429442.p?skuId=6429442 '
-# product1 = Product(url1, "button[data-sku-id='6429442']", 'FE 3070', True)
+# product0 = Product(url0, "button[data-sku-id='6429442']", 'FE 3070', True)
 #
-# url2 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
+# url1 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
 #        '-black/6429440.p?skuId=6429440 '
-# product2 = Product(url2, "button[data-sku-id='6429440']", 'FE 3080', True)
+# product1 = Product(url1, "button[data-sku-id='6429440']", 'FE 3080', True)
+
+url2 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
+       '-light-hash-rate/6477077.p?skuId=6477077 '
+product2 = Product(url2, "button[data-sku-id='6477077']", 'EVGA 3070 LHR', True)
 
 url3 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
        '/6439299.p?skuId=6439299 '
@@ -38,7 +42,7 @@ url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb
        '/6432400.p?skuId=6432400 '
 product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
-products = [product3, product4, product5]
+products = [product2, product4, product3, product5]
 loop_count = 0
 
 
