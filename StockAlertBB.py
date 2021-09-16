@@ -18,17 +18,21 @@ class Product:
         self.flag = flag
 
 
-# url0 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
+# urlA = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
 #        '-and-black/6429442.p?skuId=6429442 '
-# product0 = Product(url0, "button[data-sku-id='6429442']", 'FE 3070', True)
+# productA = Product(url0, "button[data-sku-id='6429442']", 'FE 3070', True)
 #
-# url1 = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
+# urlB = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
 #        '-black/6429440.p?skuId=6429440 '
-# product1 = Product(url1, "button[data-sku-id='6429440']", 'FE 3080', True)
+# productB = Product(url1, "button[data-sku-id='6429440']", 'FE 3080', True)
+
+url1 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
+       '-light-hash-rate/6479528.p?skuId=6479528 '
+product1 = Product(url1, "button[data-sku-id='6479528']", 'EVGA 3070 KL', True)
 
 url2 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
        '-light-hash-rate/6477077.p?skuId=6477077 '
-product2 = Product(url2, "button[data-sku-id='6477077']", 'EVGA 3070 LHR', True)
+product2 = Product(url2, "button[data-sku-id='6477077']", 'EVGA 3070 KH', True)
 
 url3 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
        '/6439299.p?skuId=6439299 '
@@ -36,13 +40,13 @@ product3 = Product(url3, "button[data-sku-id='6439299']", 'EVGA 3070', True)
 
 url4 = 'https://www.bestbuy.com/site/evga-rtx-3080-xc3-ultra-gaming-10g-p5-3885-kh-pci-express-4-0-lhr/6471615.p' \
        '?skuId=6471615 '
-product4 = Product(url4, "button[data-sku-id='6471615']", 'EVGA 3080 LHR', True)
+product4 = Product(url4, "button[data-sku-id='6471615']", 'EVGA 3080 KH', True)
 
 url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb-gddr6-pci-express-4-0-graphics-card' \
        '/6432400.p?skuId=6432400 '
 product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
-products = [product2, product4, product3, product5]
+products = [product5, product3, product4, product1, product2]
 loop_count = 0
 
 
