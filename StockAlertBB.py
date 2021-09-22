@@ -18,13 +18,13 @@ class Product:
         self.flag = flag
 
 
-# urlA = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
-#        '-and-black/6429442.p?skuId=6429442 '
-# productA = Product(url0, "button[data-sku-id='6429442']", 'FE 3070', True)
-#
-# urlB = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
-#        '-black/6429440.p?skuId=6429440 '
-# productB = Product(url1, "button[data-sku-id='6429440']", 'FE 3080', True)
+urlA = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3070-8gb-gddr6-pci-express-4-0-graphics-card-dark-platinum' \
+       '-and-black/6429442.p?skuId=6429442 '
+productA = Product(urlA, "button[data-sku-id='6429442']", 'FE 3070', True)
+
+urlB = 'https://www.bestbuy.com/site/nvidia-geforce-rtx-3080-10gb-gddr6x-pci-express-4-0-graphics-card-titanium-and' \
+       '-black/6429440.p?skuId=6429440 '
+productB = Product(urlB, "button[data-sku-id='6429440']", 'FE 3080', True)
 
 url1 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3070-xc3-ultra-gaming-8gb-gddr6-pci-express-4-0-graphics-card' \
        '-light-hash-rate/6479528.p?skuId=6479528 '
@@ -46,7 +46,7 @@ url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb
        '/6432400.p?skuId=6432400 '
 product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
-products = [product5, product3, product4, product1, product2]
+products = [product1, product2, product3]
 loop_count = 0
 
 
