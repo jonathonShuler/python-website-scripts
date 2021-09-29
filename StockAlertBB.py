@@ -46,7 +46,7 @@ url5 = 'https://www.bestbuy.com/site/evga-geforce-rtx-3080-xc3-ultra-gaming-10gb
        '/6432400.p?skuId=6432400 '
 product5 = Product(url5, "button[data-sku-id='6432400']", 'EVGA 3080', True)
 
-products = [product1, product2, product3]
+products = [productA, product1, product2, product3]
 loop_count = 0
 
 
@@ -66,7 +66,7 @@ def check_product(product):
     button_text = button[0].get_text()
     print("{0}: button: {1}".format(product.description, button_text))
 
-    if fulfillment_text != "Sold Out" or button_text != "Sold Out":
+    if not fulfillment_text.startswith("Sold Out") or button_text != "Sold Out":
         if add_cart and button_text != "Sold Out":
             add_to_cart(product.url, button_css_selector)
             print("{0} In Stock?!!!".format(product.description))
